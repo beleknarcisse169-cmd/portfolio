@@ -17,7 +17,7 @@
     <header class="header">
       <nav class="nav container">
         <a href="#hero" class="brand">[TODO] Votre Nom</a>
-        <button type="button" class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="primary-navigation">
+        <button type="button" class="nav-toggle" aria-label="Menu principal" aria-expanded="false" aria-controls="primary-navigation">
           <span></span>
           <span></span>
           <span></span>
@@ -34,12 +34,12 @@
     </header>
 
     <main>
-      <section id="hero" class="hero container reveal">
+      <section id="hero" class="hero container reveal" tabindex="-1">
         <div class="hero-copy">
           <p class="eyebrow">Sécurité offensive · Revue de code · Validation applicative</p>
           <h1>[TODO] Votre Nom</h1>
-          <h2 class="typing-line">
-            <span id="typing-text" data-text="AppSec Pentester" lang="en">AppSec Pentester</span>
+          <h2 class="typing-line" aria-label="AppSec Pentester">
+            <span id="typing-text" data-text="AppSec Pentester" lang="en" aria-hidden="true">AppSec Pentester</span>
             <span class="cursor" aria-hidden="true"></span>
           </h2>
           <p class="hero-tagline">

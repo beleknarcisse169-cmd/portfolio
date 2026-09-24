@@ -14,7 +14,6 @@ if (yearTarget) {
 const closeMenu = () => {
   if (!navToggle || !navMenu) return;
   navToggle.setAttribute('aria-expanded', 'false');
-  navToggle.setAttribute('aria-label', 'Ouvrir le menu');
   navMenu.classList.remove('is-open');
   document.body.classList.remove('menu-open');
 };
@@ -23,7 +22,6 @@ if (navToggle && navMenu) {
   navToggle.addEventListener('click', () => {
     const expanded = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', String(!expanded));
-    navToggle.setAttribute('aria-label', expanded ? 'Ouvrir le menu' : 'Fermer le menu');
     navMenu.classList.toggle('is-open', !expanded);
     document.body.classList.toggle('menu-open', !expanded);
   });
@@ -39,6 +37,7 @@ if (navToggle && navMenu) {
             behavior: prefersReducedMotion() ? 'auto' : 'smooth',
             block: 'start',
           });
+          targetSection.focus({ preventScroll: true });
         }
       }
 
@@ -55,7 +54,6 @@ if (navToggle && navMenu) {
 
 if (typingTarget) {
   const sourceText = typingTarget.dataset.text || typingTarget.textContent || '';
-  typingTarget.setAttribute('aria-label', sourceText);
 
   if (prefersReducedMotion()) {
     typingTarget.textContent = sourceText;

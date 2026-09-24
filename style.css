@@ -61,7 +61,14 @@ img {
   filter: blur(120px);
   opacity: 0.28;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
+}
+
+.header,
+main,
+.footer {
+  position: relative;
+  z-index: 1;
 }
 
 .background-glow--primary {
