@@ -351,8 +351,10 @@ img {
   color: var(--secondary);
 }
 
-.placeholder-link {
-  cursor: default;
+.placeholder-note {
+  margin-top: 1rem;
+  font-weight: 700;
+  color: var(--secondary);
 }
 
 .contact-panel {
