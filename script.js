@@ -5,7 +5,7 @@ const typingTarget = document.querySelector('#typing-text');
 const yearTarget = document.querySelector('#current-year');
 const revealItems = document.querySelectorAll('.reveal');
 const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-const prefersReducedMotion = reduceMotionQuery.matches;
+const prefersReducedMotion = () => reduceMotionQuery.matches;
 
 if (yearTarget) {
   yearTarget.textContent = new Date().getFullYear();
@@ -36,7 +36,7 @@ if (navToggle && navMenu) {
         if (targetSection) {
           event.preventDefault();
           targetSection.scrollIntoView({
-            behavior: prefersReducedMotion ? 'auto' : 'smooth',
+            behavior: prefersReducedMotion() ? 'auto' : 'smooth',
             block: 'start',
           });
         }
@@ -57,7 +57,7 @@ if (typingTarget) {
   const sourceText = typingTarget.dataset.text || typingTarget.textContent || '';
   typingTarget.setAttribute('aria-label', sourceText);
 
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion()) {
     typingTarget.textContent = sourceText;
   } else {
     typingTarget.textContent = '';
@@ -75,7 +75,7 @@ if (typingTarget) {
   }
 }
 
-if ('IntersectionObserver' in window && !prefersReducedMotion) {
+if ('IntersectionObserver' in window && !prefersReducedMotion()) {
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
