@@ -4,6 +4,8 @@ const navLinks = document.querySelectorAll('.nav-menu a');
 const typingTarget = document.querySelector('#typing-text');
 const yearTarget = document.querySelector('#current-year');
 const revealItems = document.querySelectorAll('.reveal');
+const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const prefersReducedMotion = reduceMotionQuery.matches;
 
 if (yearTarget) {
   yearTarget.textContent = new Date().getFullYear();
@@ -31,7 +33,10 @@ if (navToggle && navMenu) {
         const targetSection = document.querySelector(targetId);
         if (targetSection) {
           event.preventDefault();
-          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          targetSection.scrollIntoView({
+            behavior: prefersReducedMotion ? 'auto' : 'smooth',
+            block: 'start',
+          });
         }
       }
 
@@ -48,25 +53,27 @@ if (navToggle && navMenu) {
 
 if (typingTarget) {
   const sourceText = typingTarget.dataset.text || typingTarget.textContent || '';
-  typingTarget.textContent = '';
+  typingTarget.setAttribute('aria-label', sourceText);
 
-  let charIndex = 0;
-  const typeNextCharacter = () => {
-    if (charIndex <= sourceText.length) {
-      typingTarget.textContent = sourceText.slice(0, charIndex);
-      const delay = charIndex === sourceText.length ? 1200 : 85;
-      charIndex += 1;
-      window.setTimeout(typeNextCharacter, delay);
-    } else {
-      charIndex = 0;
-      window.setTimeout(typeNextCharacter, 400);
-    }
-  };
+  if (prefersReducedMotion) {
+    typingTarget.textContent = sourceText;
+  } else {
+    typingTarget.textContent = '';
 
-  typeNextCharacter();
+    let charIndex = 0;
+    const typeNextCharacter = () => {
+      if (charIndex <= sourceText.length) {
+        typingTarget.textContent = sourceText.slice(0, charIndex);
+        charIndex += 1;
+        window.setTimeout(typeNextCharacter, 85);
+      }
+    };
+
+    typeNextCharacter();
+  }
 }
 
-if ('IntersectionObserver' in window) {
+if ('IntersectionObserver' in window && !prefersReducedMotion) {
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
