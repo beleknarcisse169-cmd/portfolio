@@ -4,9 +4,9 @@ Portfolio statique single-page en HTML/CSS/JavaScript vanilla, pensé pour prés
 
 ## Fichiers
 
-- `/home/runner/work/portfolio/portfolio/index.html` : structure principale de la page
-- `/home/runner/work/portfolio/portfolio/style.css` : thème visuel, responsive et animations
-- `/home/runner/work/portfolio/portfolio/script.js` : interactions (menu mobile, typing effect, reveal on scroll)
+- `index.html` : structure principale de la page
+- `style.css` : thème visuel, responsive et animations
+- `script.js` : interactions (menu mobile, typing effect, reveal on scroll)
 
 ## Personnalisation
 
