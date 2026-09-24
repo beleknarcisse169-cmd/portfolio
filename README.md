@@ -29,4 +29,10 @@ Avant publication, remplacez les éléments marqués `[TODO]` par vos informatio
 
 ## Développement local
 
-Comme il s'agit d'un site statique, vous pouvez simplement ouvrir `index.html` dans un navigateur pour une vérification rapide, ou servir le dossier avec un serveur local de votre choix.
+Pour reproduire un environnement proche de GitHub Pages, servez le dossier avec un petit serveur HTTP local. Exemple :
+
+```bash
+python3 -m http.server 8000
+```
+
+Ensuite, ouvrez `http://localhost:8000` dans votre navigateur.

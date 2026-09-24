@@ -117,8 +117,6 @@ img {
 .nav-menu a:focus-visible,
 .project-link:hover,
 .project-link:focus-visible,
-.publication-card a:hover,
-.publication-card a:focus-visible,
 .contact-item:hover,
 .contact-item:focus-visible {
   color: var(--primary);
@@ -346,12 +344,15 @@ img {
   font-size: 0.95rem;
 }
 
-.project-link,
-.publication-card a {
+.project-link {
   display: inline-flex;
   margin-top: 1rem;
   font-weight: 700;
   color: var(--secondary);
+}
+
+.placeholder-link {
+  cursor: default;
 }
 
 .contact-panel {
